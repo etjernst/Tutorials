@@ -40,21 +40,24 @@ There is a learning curve, but it's worth it---your life will be changed for the
 
 ### Git vs GitHub
 Git and GitHub are not the same:
-  * **Git** is a local tool, i.e. it lives on your computer and
-    - uses version control to make collaboration infinitely better
-    - allows simultaneous editing _and_ execution of scripts
-    - gives very detailed comparisons of histories and alternate versions---and allows alternate versions to co-exist for as long as you want! (we'll get back to this below)
-    - greatly facilitates transparent and reproducible research
-  * **GitHub** lives in the cloud; it's a hosting platform that provides a bunch of services built on top of the Git system
- > I use the commandline for most things, but some things I find easier to do in GitHub. For example, when comparing two versions of code (to see what my co-authors have done, for example), I find the GitHub interface more useful.
+**Git** is a local tool, i.e. it lives on your computer and
+  - uses version control to make collaboration infinitely better
+  - allows simultaneous editing _and_ execution of scripts
+  - gives very detailed comparisons of histories and alternate versions---and allows alternate versions to co-exist for as long as you want! (we'll get back to this below)
+  - greatly facilitates transparent and reproducible research
+
+**GitHub** lives in the cloud; it's a hosting platform that provides a bunch of services built on top of the Git system
+ > I use the command line for most things, but some things I find easier to do in GitHub. For example, when comparing two versions of code (to see what my co-authors have done, for example), I find the GitHub interface more useful.
 
 
 ## <a name="git-vocab">Git vocab</a>
 
 There's a lot of terminology and details around git. I don't know/understand half of it. The beauty is that you don't have to understand
-how git works to start using it! Some terms are useful though:
+how git works to start using it!
 
-#### Repository (a.k.a. _repo_)
+Some terms are useful though (makes it easier to search help files):
+
+#### 1. Repository (a.k.a. _repo_)
 = basically a project folder
   > A repo contains all files associated with a project
   (including any associated  documentation). Your project repo also stores **every file's revision history**.
@@ -70,8 +73,8 @@ You can get a repo in two main ways:
 
 Ok, so what is `cloning`?
 
-#### _Cloning_ a repo
-= "downloading" it (... except not exactly)
+#### 2. _Cloning_ a repo
+= "downloading" it (...kinda)
 
 A clone is a copy of a repository that lives on your computer (instead of in the cloud somewhere)
   > So why did I put "downloading" in scare quotes?
@@ -85,15 +88,18 @@ A clone is a copy of a repository that lives on your computer (instead of in the
   the most recent files on the default branch. In brief, you
   wouldn't get any of the magic (i.e., the .git folder) and you can no longer use git in the downloaded folder
 
-#### Committing
+#### 4. Committing
 = a revision
 
-Above, I mentioned that a project repo stores every file's revision history. How do changes make it into the history? And how is it different from, say, Dropbox.
+Above, I mentioned that a project repo stores every file's revision history. How do changes make it into the history? And how is it different from, say, how this works in Dropbox.
 
 Dropbox does version control, right?
 You can click on files and see previous versions.
 One issue is that you get a new version every single time you  press `Ctrl+S` or click save. If you click `Ctrl+S` a lot (like I do), you end up with tons of changes.
-How many of these are meaningful?
+
+How many of these are meaningful changes? And how would I figure
+out a week from now (or three years from now!) which of these
+changes did something specific when I try to remember?
 
 ![dropbox screenshot](assets/dropbox.png "Dropbox screenshot")
 
@@ -103,23 +109,62 @@ the previous snapshot (i.e., the previous commit)
 
 
 
-So stead of having a list of each saved version of a file, in git you use commits <br>
+So instead of having a list of each saved version of a file, in git you use commits.
+
+
+Each commit has a time stamp and tracks who did the commit.
+Commits should also contain a commit message, i.e. a _brief_ summary of
+the changes in that commit.
+Back in the bad old days, I used to save new versions of files all the time (`YYMMDD_docname_INITIALS.doc`)...
+This is like that, except _much_ better!
+
+> Some extra detail: When you make a commit to save your work,
+git creates a unique ID (a _hash_) that allows you to keep track
+of the specific changes committed---as well as who made them and when.
+
+**You have to tell Git when to create
+new commits and what to call them.**
+
+This is likely the biggest difference compared to your current workflow.
+Git is always watching your changes, but it doesn't store them
+until we commit them.
+
+#### 3. `Stage` changes
+= tell git to mark the files that you will include in your next commit
+
+Staging is kind of an intermediate step between saving a file locally and creating the commit.
+(So yes, the numbering is out of order on purpose :smile:)
+I am not 100% sure why this step exists.
+To make it more confusing, the actual command is `add`, not stage.
+As in, you are _adding_ a file to the staging area.
+
+<details> <summary> If you want my best guess, click here (but not necessary)</summary>
+My best guess/explanation is the following:
+say you are testing out a robustness check.
+This requires you to edit several .do files.
+So you edit `masterDoFile.do` and add it to the staging area:
+```bash
+git add "$projectFolder/masterDoFile.do"
+```
+Then you make some changes to the estimation code, `estimationCode.do` and add that to the staging area:
+```bash
+git add "$projectFolder/analysis/estimationCode.do"
+```
+You can then commit both files, i.e. add them to the version history with a useful message:
+```bash
+git commit -m "Robustness check for Table 3"
+```
+Logically, you changed both of these files in the process
+of running a robustness check but maybe you don't see a reason to have a different commit for the two files.
+So the staging step recording what _files_ you have changed and the commit
+</details>
+
 <br>
-.<br>
-<br>
-Each commit has a time stamp and tracks who did the commit. This is similar to my old way of keeping track of things:
-naming each version of a file _YYMMDD docname INITIALS.doc_... but much better!<br>
 
-
-
-
-A commit, or "revision", is an individual change to a file (or set of files). When you make a commit to save your work, Git creates a unique ID (a.k.a. the "SHA" or "hash") that allows you to keep record of the specific changes commited along with who made them and when. Commits usually contain a commit message which is a brief description of what changes were made.
 
 
 * _Stage:_  before you commit you tell git what you want to commit by staging it (an intermediate step)
-* _Commit:_ git doesn’t make changes in its history (log) database unless we commit the files
-(think of this as a "yes, I am sure I want to commit these changes" step --
-not that there are any dire consequences to committing, since you can always roll back to earlier versions)
+* _Commit:_ git
   > Now, _committing_ in your working directory is going to tell the little git creature* that
 you want to keep a record of what you just did. You commit to it.<br>
   > You should plan to commit every time you have completed something meaningful.<br> Some examples:<br>
