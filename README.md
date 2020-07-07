@@ -6,24 +6,36 @@
 * [Before we start](#before-start)
 * [Git basics](#git-basics)
 * [Git vocab](#git-vocab)
-* [Basic workflow](#basic-workflow)
+  - [1. `repo`](#repo)
+  - [2. `clone`](#repo)
+  - [4. `commit`](#commit)
+  - [3. `stage`](#stage)
+  - [0. `pull`](#pull)
+  - [5. `push`](#push)
+---
+Tutorial starts here:  
 * [First time setup](#step-0)
-* [Cloning](#cloning)
-* [Committing](#committing)
+* [New project setup](#project-setup)
+* [Practice 1: staging and committing](#practice-stage-commit)
+* [Basic workflow](#basic-workflow)
 * [Branches](#introducing-branches)
 
+---
 
 ## <a name="before-start">Before we start</a>
 
 Before embarking on this tutorial, you need two things:
 1. A [GitHub](https://github.com) account
-  > Make sure that I have added you as a collaborator to the repository called [Tutorials](https://github.com/etjernst/Tutorials).
+  > :exclamation:<br>
+  Make sure that I have added you as a collaborator to the repository called [Tutorials](https://github.com/etjernst/Tutorials).
   If you are logged in to GitHub but clicking on this link takes you to a 404 error page, then most likely you are not a contributor yet  :smile:
 
 2. You need to install a git client on your computer.
-  > When you download the relevant install [here](https://git-scm.com/downloads), you should automatically get git bash. This tutorial will use git bash, but you can find tons of other options [here](https://git-scm.com/downloads/guis). Some people like
+  > When you download the relevant install [here](https://git-scm.com/downloads), you should automatically get git bash. This tutorial will use git bash, but there are many other user interfaces. You can find tons of other options [here](https://git-scm.com/downloads/guis).
 
 3. _Recommended:_ Read ["Code and Data for the Social Sciences"](https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf)
+
+---
 
 ## <a name="git-basics">Git basics - what is this thing?</a>
 
@@ -37,7 +49,6 @@ There is a learning curve, but it's worth it---your life will be changed for the
 
 ![](https://media.giphy.com/media/OK27wINdQS5YQ/giphy.gif){:height="75%" width="75%"}
 
-
 ### Git vs GitHub
 Git and GitHub are not the same:
 **Git** is a local tool, i.e. it lives on your computer and
@@ -49,6 +60,9 @@ Git and GitHub are not the same:
 **GitHub** lives in the cloud; it's a hosting platform that provides a bunch of services built on top of the Git system
  > I use the command line for most things, but some things I find easier to do in GitHub. For example, when comparing two versions of code (to see what my co-authors have done, for example), I find the GitHub interface more useful.
 
+ [Back to top](#Index)
+
+---
 
 ## <a name="git-vocab">Git vocab</a>
 
@@ -57,7 +71,7 @@ how git works to start using it!
 
 Some terms are useful though (makes it easier to search help files):
 
-#### 1. Repository (a.k.a. _repo_)
+#### <a name="repo">1. Repository (a.k.a. _repo_)</a>
 = basically a project folder
   > A repo contains all files associated with a project
   (including any associated  documentation). Your project repo also stores **every file's revision history**.
@@ -73,11 +87,11 @@ You can get a repo in two main ways:
 
 Ok, so what is `cloning`?
 
-#### 2. _Cloning_ a repo
-= "downloading" it (...kinda)
+#### <a name="clone">2. `Clone`</a>
+to `clone` a repo is to "download" it (...kinda)
 
 A clone is a copy of a repository that lives on your computer (instead of in the cloud somewhere)
-  > So why did I put "downloading" in scare quotes?
+  > So why did I put "download" in scare quotes?
   The main difference between cloning and downloading is that when
   git clones a repo, it pulls down a full copy of all versions of every file and folder for the project AND
   it remembers where you downloaded it from!
@@ -88,7 +102,7 @@ A clone is a copy of a repository that lives on your computer (instead of in the
   the most recent files on the default branch. In brief, you
   wouldn't get any of the magic (i.e., the .git folder) and you can no longer use git in the downloaded folder
 
-#### 4. Committing
+#### <a name="commit">4. `Commit`</a>
 = a revision
 
 Above, I mentioned that a project repo stores every file's revision history. How do changes make it into the history? And how is it different from, say, how this works in Dropbox.
@@ -107,8 +121,6 @@ In git, you use `commits` to indicate (and describe!)
 each meaningful difference between two versions of the project folder. Each commit is a snap shot of all files in the project folder, and lists how that snapshot differs from
 the previous snapshot (i.e., the previous commit)
 
-
-
 So instead of having a list of each saved version of a file, in git you use commits.
 
 
@@ -118,10 +130,12 @@ the changes in that commit.
 Back in the bad old days, I used to save new versions of files all the time (`YYMMDD_docname_INITIALS.doc`)...
 This is like that, except _much_ better!
 
-> Some extra detail: When you make a commit to save your work,
-git creates a unique ID (a _hash_) that allows you to keep track
+When you make a commit to save your work,
+git creates a unique ID (a `hash`) that allows you to keep track
 of the specific changes committed---as well as who made them and when.
 
+
+> :exclamation:
 **You have to tell Git when to create
 new commits and what to call them.**
 
@@ -129,7 +143,7 @@ This is likely the biggest difference compared to your current workflow.
 Git is always watching your changes, but it doesn't store them
 until we commit them.
 
-#### 3. `Stage` changes
+#### <a name="stage">5. `Stage`</a>
 = tell git to mark the files that you will include in your next commit
 
 Staging is kind of an intermediate step between saving a file locally and creating the commit.
@@ -138,7 +152,8 @@ I am not 100% sure why this step exists.
 To make it more confusing, the actual command is `add`, not stage.
 As in, you are _adding_ a file to the staging area.
 
-<details> <summary> If you want my best guess, click here (but not necessary)</summary>
+<details> <summary> If you want my best guess, click here (not necessary)</summary>
+
 My best guess/explanation is the following:
 say you are testing out a robustness check.
 This requires you to edit several .do files.
@@ -161,55 +176,119 @@ So the staging step recording what _files_ you have changed and the commit
 
 <br>
 
+#### <a name="pull">0. `Pull`</a>
+to `pull` changes = syncing changes from the remote (e.g. GitHub) to your local repo
 
+When you pull from a repository, you retrieve all
+commits from that remote repository and
+merge them into the local repository.
+You should do this before you start working (which is why I numbered it "0")
 
-* _Stage:_  before you commit you tell git what you want to commit by staging it (an intermediate step)
-* _Commit:_ git
-  > Now, _committing_ in your working directory is going to tell the little git creature* that
-you want to keep a record of what you just did. You commit to it.<br>
-  > You should plan to commit every time you have completed something meaningful.<br> Some examples:<br>
-  >  * "Created a master .do file"
-  >  * "Fixed bug in cleaning code"<br>
-  > (\*) Anyway, that's how I think about it: a little gnome who watches what I do in the directory)<br>
-  > But if you are working with others, or you worry about your computer getting stolen with all
-  > your precious work on it, then you may want to sync these changes with the origin repo on GitHub.<br>
-  > This also means that your collaborators will be able to see what you have done.
-* Syncing your changes with the origin repo = _pushing_ them
-* Syncing any changes that someone else might have made to the repo = _pulling_ them
+#### <a name="push">6. `Push`</a>
+= send your (committed) changes to a remote repository (e.g., on GitHub)
+
+If you change something locally, nobody else will have access to those changes until you _push_ them to the remote repo.
+
+[Back to top](#Index)
 
 ---
-## Basic workflow
-The steps below outline the general workflow of git.<br>
-When you use them going forward you will replace the square brackets with the relevant info
-(without the square brackets) <br>
-1. **Make** changes to a file & save them in your local clone
-2. **Stage** these local changes:<br>
-  `git add [file]`
-3. **Commit** these local changes to your Git history (with a helpful message!)<br>
-  `git commit -m "[very helpful message]"`
-4. **Pull** from the GitHub repo *just in case* anyone else made changes too:<br>
-  `git pull`
-   > I recommend always doing this even if you are working on your own!<br>
-   > But always commit or at least stash your changes before pulling from the remote
-5. **Push** your changes to the GitHub repo:<br>
-  `git push`
+
+## <a name="step-0"> First-time set-up</a>
+| :pushpin:  <br> You should do this the very first time you are using git on a computer. Then you should not have to do it again. |
+|  :---  |
+
+### Introduce yourself to git
+1. Open up git bash, which should have come with the git installation.
+2. Set your name, which will be attached to your commits
+```bash
+git config --global user.name "[yournamehere]"
+```
+3. Set your email (should be the same email that you used to sign up for GitHub)
+```bash
+git config --global user.email "[youremailhere]"
+```
+
+Hopefully so far, so good!
+
+[Back to top](#Index)
+
 ---
 
-## <a name="step-0">Step 0 (a) - Setting up the first time you use git</a>
+## <a name="project-setup">New project setup</a>
+| :pushpin:  <br> You only need to follow these steps the first time you work with a project on a given computer. Then you should be able to follow the workflow below. |
+|  :---  |
 
-Open up git bash, which should have come with the git installation.
 
-Set your name, which will be attached to your commits: <br>
-  `git config --global user.name "[yournamehere]"`<br>
-Set your email<br>
-  `git config –-global user.email "[youremailhere]"`<br>
+You can follow these steps with a public repo,
+or with a private repo to which you've been added as a collaborator.
 
-Check working directory (this will list where you are currently working)<br>
-  `pwd` <br>
-To change the directory, you can either type in the location where you want to work or drag the folder into the bash window.
-If your filepath has spaces in it, you need to start and end it with these little single commas: ' '
+0. Open git bash (if not already open)
+1. Check the working directory (this will show you where you are currently working):
+   ```bash
+   pwd
+   ```
+2. Assuming that this is not where you want your git repo to live, you need to change the directory. You can do this either by
+typing `cd` followed by the location where you want the clone to live
+or click-and-drag the folder into the bash window:
+  ![](assets/cd.gif){:height="75%" width="75%"}
+  > :exclamation: Note that most people recommend not placing git-related things (repos, clones) in Dropbox or other cloud syncing services.
+  >
+  > I just keep a `git` folder on my Desktop with all my repos in it.
+To do the same, follow these steps:
+> ```bash
+> cd        ~/Desktop/
+> mkdir     git
+> cd        git
+> ```
 
-## <a name="cloning">Step 0 (b) - Clone the repo into a local directory on your computer</a>
+
+3. Ok, now let's clone a repo into the `git` folder.
+   1. Go to the repo you want to clone (e.g., [https://github.com   etjernst/Materials](https://github.com/etjernst/Materials))
+   2. Click the green Code button, which should drop down and yield   something like this:
+   ![](assets/README-61cb1c2d.png)
+   3. Click the clipboard symbol (copies the URL)
+   4. Back in bash, type
+   ```bash
+   git clone [thing-you-just-copied]
+   ```
+   > _Hint:_ on Windows, typing `Shift+Insert` is a shortcut for paste in git bash
+
+:question: Navigate to your git folder. What do you see?
+
+4. Tell bash to use the cloned repo as the working directory:
+```bash
+cd [repo-name-that-you-just-cloned]
+```
+> In the case of my Materials repo, this would simply be `cd Materials`
+
+---
+
+## <a name="practice-stage-commit">Practice staging and committing</a>
+
+1. In your local clone, open up the README.md file in a text editor.
+It is in markdown format, but is easy to edit in any text editor.
+[Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is a markdown cheat sheet
+if you want to try any more fancy things (and for future reference).<br>
+2. Under collaborators, add your name to the file. `<br>` tells markdown that you want a new line.
+3. Save the file.
+4. Using git bash, add a folder in the repo called Various using `mkdir Various`, which will create the folder in the working directory. 5. Create a folder inside Various with your name. As you probably guessed, you will type `mkdir Various/your_name`.
+6. Manually add a .do file to the folder called test.do (you can drag-and-drop, copy-paste, or "save as" or whatever other way you prefer).
+  > You can add whatever you usually add at the top of .do files if you have a template of some kind.
+6. Go back into git bash.
+7. Check what changes have been made, by asking git the status of your local repository: `git status`
+  > You should see the changes pop up
+8. _Stage_ the changes you just made in your local clone: `git add [file]`
+  > Here \[file\] is the file you saw listed as changed above -- for now just add each file separately;
+later we'll learn to do this with shortcuts
+  > You should see both the readme.md and your .do file show up when you type `git status`._
+9. _Commit_ these local changes to your git history (with a helpful message!): `git commit -m "[very helpful message]"`
+  > This will tell git that you are serious about these changes and want to commit them to memory
+10. _Pull_ from the GitHub repo **just in case** anyone else made changes while you were working: `git pull`
+  > This will check if anyone else has made changes to the original repo (and is also why I introduce branches below)
+11. _Push_ your changes to the GitHub repo: `git push`
+12. Go to the repo that you cloned originally on GitHub.
+  > Somewhere on the left near the top there's a link that says "# commits" (where # is a number)
+13. Click on your recent commit. What do you see?
 
 The main repo with code will live on GitHub, and then we work on a local clone, pulling and pushing our changes to GitHub.
 We will not sync data to GitHub (only code). There are a few reasons for this:
@@ -222,11 +301,6 @@ We will not sync data to GitHub (only code). There are a few reasons for this:
 So, we need to make a local clone! This is basically a local copy of everything on GitHub, with its own git version control
 keeping track of everything that you are doing.
 
-1. Set the working directory to where you want to work from (again, you can either type the filepath or drag and drop the
-folder onto the git bash window) _This can be anywhere on your local computer._<br>
-  `cd [filepath/drag file]`
-  or<br>
-  `cd [localfilepath]`
 2. Tell git to clone everything that is on GitHub to a local directory
   `git clone [file_path_here]`    
   > replace [file_path_here] with https://github.com/etjernst/Tutorials.git<br>
@@ -259,35 +333,35 @@ Once you've done all this, you can just
 In order to have multiple people working in the same repository, you also need to know how to _branch_,
 but first let's practice doing a little commit.<br>
 
-1. In your local clone, open up the README.md file in a text editor.
-It is in markdown format, but is easy to edit in any text editor.
-[Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is a markdown cheat sheet
-if you want to try any more fancy things (and for future reference).<br>
-2. Under collaborators, add your name to the file. `<br>` tells markdown that you want a new line.
-3. Save the file.
-4. Using git bash, add a folder in the repo called Various using `mkdir Various`, which will create the folder in the working directory. 5. Create a folder inside Various with your name. As you probably guessed, you will type `mkdir Various/your_name`.
-6. Manually add a .do file to the folder called test.do (you can drag-and-drop, copy-paste, or "save as" or whatever other way you prefer).
-  > You can add whatever you usually add at the top of .do files if you have a template of some kind.
-6. Go back into git bash.
-7. Check what changes have been made, by asking git the status of your local repository: `git status`
-  > You should see the changes pop up
-8. _Stage_ the changes you just made in your local clone: `git add [file]`
-  > Here \[file\] is the file you saw listed as changed above -- for now just add each file separately;
-later we'll learn to do this with shortcuts
-  > You should see both the readme.md and your .do file show up when you type `git status`._
-9. _Commit_ these local changes to your git history (with a helpful message!): `git commit -m "[very helpful message]"`
-  > This will tell git that you are serious about these changes and want to commit them to memory
-10. _Pull_ from the GitHub repo **just in case** anyone else made changes while you were working: `git pull`
-  > This will check if anyone else has made changes to the original repo (and is also why I introduce branches below)
-11. _Push_ your changes to the GitHub repo: `git push`
-12. Go to the repo that you cloned originally on GitHub.
-  > Somewhere on the left near the top there's a link that says "# commits" (where # is a number)
-13. Click on your recent commit. What do you see?
+
 
 
 > Hopefully that all goes well! If not, please feel free to shoot me emails with questions. <br>
 > You can always include screenshots of what is going wrong, or refer me to a specific point in this doc where you got stuck!<br>
 > Hopefully, though, it will all run smoothly!
+
+[Back to top](#Index)
+
+---
+
+## <a name="basic-workflow">Basic workflow</a>
+The steps below outline the general workflow of git.<br>
+When you use them going forward you will replace the square brackets with the relevant info
+(without the square brackets) <br>
+1. **Make** changes to a file & save them in your local clone
+2. **Stage** these local changes:<br>
+  `git add [file]`
+3. **Commit** these local changes to your Git history (with a helpful message!)<br>
+  `git commit -m "[very helpful message]"`
+4. **Pull** from the GitHub repo *just in case* anyone else made changes too:<br>
+  `git pull`
+   > I recommend always doing this even if you are working on your own!<br>
+   > But always commit or at least stash your changes before pulling from the remote
+5. **Push** your changes to the GitHub repo:<br>
+  `git push`
+---
+
+
 
 ## Introducing branches
 
