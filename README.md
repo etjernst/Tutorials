@@ -1,9 +1,3 @@
----
-layout: article
-title: git
-show_title: false
----
-
 # Index
 * [Before we start](#before-start)
 * [Git basics](#git-basics)
