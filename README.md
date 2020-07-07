@@ -12,7 +12,7 @@
   - [3. `stage`](#stage)
   - [0. `pull`](#pull)
   - [5. `push`](#push)  
-- [ ] [First time setup](#step-0)
+* [First time setup](#step-0)
 * [New project setup](#project-setup)
 * [Practice 1: staging and committing](#practice-stage-commit)
 * [Basic workflow](#basic-workflow)
@@ -251,7 +251,7 @@ To do the same, follow these steps:
    ```bash
    git clone [thing-you-just-copied]
    ```
-   > _Hint:_ on Windows, typing `Shift+Insert` is a shortcut for paste in git bash
+  > _Hint:_ on Windows, typing `Shift+Insert` is a shortcut for paste in git bash
 
 :question: Navigate to your git folder. What do you see?
 
@@ -286,8 +286,30 @@ Back in git bash, add the file to the staging area (first type `git status` agai
    git status
    git add practice/[yourName.md]
    ```
-5. Open up the README.md file in your local repo.
+5. Create a `README-practice.md` file in the `practice` folder, add the text _Hello world!_ to the file, and save it.
+   <details><summary>Code hint below</summary>
 
+   ```bash
+   touch practice/README-practice.md
+   ```
+   </details>
+6. Stage your changes.
+   <details><summary>Code hint below</summary>
+
+   ```bash
+   git status
+   git add practice/README-practice.md
+   ```
+   </details>
+7. Now commit your changes. You have staged the changes to both of these files, so they will both be added to the same commit.
+> :exclamation: Don't forget to add a commit message summarizing your commit!
+```bash
+git commit -m "Your very helpful commit message"
+```
+8. Now, to make sure that you haven't missed any changes that someone else (or past-you from a different machine) have implemented, `pull` from the remote repo:
+```bash
+git pull origin 
+```
 
 2. Under collaborators, add your name to the file. `<br>` tells markdown that you want a new line.
 3. Save the file.
