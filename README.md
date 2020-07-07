@@ -4,7 +4,9 @@ title: git
 show_title: false
 ---
 
-# Index
+# Git tutorial
+
+## Index
 * [Before we start](#before-start)
 * [Git basics](#git-basics)
 * [Git vocab](#git-vocab)
@@ -40,25 +42,80 @@ There is a learning curve, but it's worth it---your life will be changed for the
 ![](https://media.giphy.com/media/OK27wINdQS5YQ/giphy.gif){:height="75%" width="75%"}
 
 
-#### Git vs GitHub
-Git and [GitHub](github.com) are not the same:
-  * **Git** is a tool that makes collaboration infinitely better. It also greatly facilitates transparent and reproducible research.
-  * **GitHub** is an online hosting platform that provides an bunch of services built on top of the Git system.
-  > You don't _need_ GitHub to use Git... But it will change your life for the better!
+### Git vs GitHub
+Git and GitHub are not the same:
+  * **Git** is a local tool, i.e. it lives on your computer and
+    - uses version control to make collaboration infinitely better
+    - allows simultaneous editing _and_ execution of scripts
+    - gives very detailed comparisons of histories and alternate versions---and allows alternate versions to co-exist for as long as you want! (we'll get back to this below)
+    - greatly facilitates transparent and reproducible research
+  * **GitHub** lives in the cloud; it's a hosting platform that provides a bunch of services built on top of the Git system
+ > I use the commandline for most things, but some things I find easier to do in GitHub. For example, when comparing two versions of code (to see what my co-authors have done, for example), I find the GitHub interface more useful.
 
 
-## <a name="git-vocab">Git vocab & pre-recs</a>
-* Project = repository / _repo_
-  > What you normally think of as a project folder is called a repo in git speak.<br>
-  > I like to create the repo on GitHub and then clone it to whatever working directory you want to work out of.<br>
-  > This means that the GitHub version is the remote origin folder and you are working in a copy on your computer.<br>
-* "Downloading" a repo to your local computer = _cloning_ the repo to your working directory
-  > Ok, so why is "downloading" in scare quotes?<br>
-  > Well, the main difference between cloning and downloading is that when Git clones a repo,
-it **remembers where you downloaded it from!**<br>
-  > This is important because it means that git knows where to share any edits you make to files in the repo.<br>
-  > More on how to clone below.
-* Folder location on your local computer = _working directory_
+## <a name="git-vocab">Git vocab</a>
+
+There's a lot of terminology and details around git. I don't know/understand half of it. The beauty is that you don't have to understand
+how git works to start using it! Some terms are useful though:
+
+#### Repository (a.k.a. _repo_)
+= basically a project folder
+  > A repo contains all files associated with a project
+  (including any associated  documentation). Your project repo also stores **every file's revision history**.
+  >
+  > Repos can have multiple collaborators and can be either public or private.
+
+You can get a repo in two main ways:
+1. You can `clone` an existing Git repository from elsewhere
+  > If you have created a repo already, or are joining a project that someone else already made a repo for, this is for you
+
+2. You can take a local directory (folder) that is currently not under version control, and turn it into a Git repository
+  > If you already have a project folder that you want to start using version control with, this is for you
+
+Ok, so what is `cloning`?
+
+#### _Cloning_ a repo
+= "downloading" it (... except not exactly)
+
+A clone is a copy of a repository that lives on your computer (instead of in the cloud somewhere)
+  > So why did I put "downloading" in scare quotes?
+  The main difference between cloning and downloading is that when
+  git clones a repo, it pulls down a full copy of all versions of every file and folder for the project AND
+  it remembers where you downloaded it from!
+  >
+  > The cloned repo stays connected to the _remote_ version (i.e. the one in the cloud), so when you make local changes to your file, git knows where these should go when you decide to push them to the remote version
+  >
+  > If you instead decided to download the repo, you would just get
+  the most recent files on the default branch. In brief, you
+  wouldn't get any of the magic (i.e., the .git folder) and you can no longer use git in the downloaded folder
+
+#### Committing
+= a revision
+
+Above, I mentioned that a project repo stores every file's revision history. How do changes make it into the history?
+
+Take dropbox. It does version control, right?
+You can click on files and see previous versions.
+So why do we need anything else?
+
+![dropbox screenshot](https://github.com/etjernst/Materials/blob/master/dropbox.png "Dropbox screenshot")
+From this you can tell that I click Ctrl+S A LOT! But are all these meaningful differences?<br>
+
+Instead of having a list of each saved version of a file, in git you use commits to indicate what is each
+meaningful difference between two versions of our project folder.<br>
+<br>
+Each commit is a snap shot of all files in the project folder, and lists how that snapshot differs from
+the previous snapshot (i.e., the previous commit).<br>
+<br>
+Each commit has a time stamp and tracks who did the commit. This is similar to my old way of keeping track of things:
+naming each version of a file _YYMMDD docname INITIALS.doc_... but much better!<br>
+
+
+
+
+A commit, or "revision", is an individual change to a file (or set of files). When you make a commit to save your work, Git creates a unique ID (a.k.a. the "SHA" or "hash") that allows you to keep record of the specific changes commited along with who made them and when. Commits usually contain a commit message which is a brief description of what changes were made.
+
+
 * _Stage:_  before you commit you tell git what you want to commit by staging it (an intermediate step)
 * _Commit:_ git doesn’t make changes in its history (log) database unless we commit the files
 (think of this as a "yes, I am sure I want to commit these changes" step --
@@ -146,21 +203,13 @@ Once you've done all this, you can just
 6. and _push_ the changes.
 
 ## Committing
-To collaborate on a repository, we need to introduce two main things: _commits_ and _branches_<br>
-I am starting with commits here.
 
-You have probably used dropbox. How does it do version control? You can click on any file and see previous versions.<br>
-![dropbox screenshot](https://github.com/etjernst/Materials/blob/master/dropbox.png "Dropbox screenshot")
-From this you can tell that I click Ctrl+S A LOT! But are all these meaningful differences?<br>
 
-Instead of having a list of each saved version of a file, in git you use commits to indicate what is each
-meaningful difference between two versions of our project folder.<br>
-<br>
-Each commit is a snap shot of all files in the project folder, and lists how that snapshot differs from
-the previous snapshot (i.e., the previous commit).<br>
-<br>
-Each commit has a time stamp and tracks who did the commit. This is similar to my old way of keeping track of things:
-naming each version of a file _YYMMDD docname INITIALS.doc_... but much better!<br>
+
+
+
+
+
 <br>
 In order to have multiple people working in the same repository, you also need to know how to _branch_,
 but first let's practice doing a little commit.<br>
@@ -322,3 +371,5 @@ If you want to switch back to the master branch (or any other branch)<br>
 _Sources:_<br>
 * Grant McDermott's great [lecture notes](https://github.com/uo-ec607/lectures)
 * Trainings and resources from the World Bank's DIME unit (both [here](https://github.com/worldbank/DIME-Resources) and [here](https://worldbank.github.io/dimeanalytics/git/))
+* The [GitHub documentation glossary](https://docs.github.com/en/github/getting-started-with-github/github-glossary)
+* [Pro Git](https://git-scm.com/book/en/v2) by Chacon & Straub
