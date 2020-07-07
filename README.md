@@ -12,7 +12,7 @@
   - [3. `stage`](#stage)
   - [0. `pull`](#pull)
   - [5. `push`](#push)  
-* [First time setup](#step-0)
+- [ ] [First time setup](#step-0)
 * [New project setup](#project-setup)
 * [Practice 1: staging and committing](#practice-stage-commit)
 * [Basic workflow](#basic-workflow)
@@ -242,12 +242,12 @@ To do the same, follow these steps:
 > ```
 
 
-3. Ok, now let's clone a repo into the `git` folder.
-   1. Go to the repo you want to clone (e.g., [https://github.com   etjernst/Materials](https://github.com/etjernst/Materials))
-   2. Click the green Code button, which should drop down and yield   something like this:
+3. Ok, now let's clone a repo into the `git` folder
+   - Go to the repo you want to clone (e.g., [https://github.com   etjernst/Materials](https://github.com/etjernst/Materials))
+   - Click the green Code button, which should drop down and yield   something like this:
    ![](assets/README-61cb1c2d.png)
-   3. Click the clipboard symbol (copies the URL)
-   4. Back in bash, type
+   - Click the clipboard symbol (copies the URL)
+   - Back in bash, type
    ```bash
    git clone [thing-you-just-copied]
    ```
@@ -256,19 +256,38 @@ To do the same, follow these steps:
 :question: Navigate to your git folder. What do you see?
 
 4. Tell bash to use the cloned repo as the working directory:
-```bash
-cd [repo-name-that-you-just-cloned]
-```
+   ```bash
+   cd [repo-name-that-you-just-cloned]
+   ```
 > In the case of my Materials repo, this would simply be `cd Materials`
 
 ---
 
 ## <a name="practice-stage-commit">Practice staging and committing</a>
 
-1. In your local clone, open up the README.md file in a text editor.
-It is in markdown format, which is easy to edit in any text editor.
-[Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is a markdown cheat sheet
-if you want to try any more fancy things (and for future reference).
+1. Add a new file to the repo. Let's add it inside a folder called _practice_:
+   - To do this, first create the folder _practice_ using the command `mkdir` (or you can navigate to your repo and add the folder manually---it doesn't matter)
+   - Then use the command `touch` to create a new file called `yourName.md`
+     ```bash
+     mkdir practice
+     touch practice/[yourName.md]
+     ```
+      The `.md` extension tells us that this is in markdown format. Markdown is easy to edit in any text editor.
+      [Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is a markdown cheat sheet
+      for future reference.
+2. Now type `git status` in bash
+  > :question: What do you see?
+
+3. Open up the file with your favorite text editor and add
+the text _"About to do my first git commit!"_ and save the file.
+4. `stage` the changes:<br>
+Back in git bash, add the file to the staging area (first type `git status` again to see what has changed---it's useful to get a sense of what the results look like):
+   ```bash
+   git status
+   git add practice/[yourName.md]
+   ```
+5. Open up the README.md file in your local repo.
+
 
 2. Under collaborators, add your name to the file. `<br>` tells markdown that you want a new line.
 3. Save the file.
