@@ -1,8 +1,4 @@
----
-layout: article
-title: git
-show_title: false
----
+
 
 # Git tutorial
 
@@ -92,20 +88,24 @@ A clone is a copy of a repository that lives on your computer (instead of in the
 #### Committing
 = a revision
 
-Above, I mentioned that a project repo stores every file's revision history. How do changes make it into the history?
+Above, I mentioned that a project repo stores every file's revision history. How do changes make it into the history? And how is it different from, say, Dropbox.
 
-Take dropbox. It does version control, right?
+Dropbox does version control, right?
 You can click on files and see previous versions.
-So why do we need anything else?
+One issue is that you get a new version every single time you  press `Ctrl+S` or click save. If you click `Ctrl+S` a lot (like I do), you end up with tons of changes.
+How many of these are meaningful?
 
-![dropbox screenshot](https://github.com/etjernst/Materials/blob/master/dropbox.png "Dropbox screenshot")
-From this you can tell that I click Ctrl+S A LOT! But are all these meaningful differences?<br>
+![dropbox screenshot](assets/dropbox.png "Dropbox screenshot")
 
-Instead of having a list of each saved version of a file, in git you use commits to indicate what is each
-meaningful difference between two versions of our project folder.<br>
+In git, you use `commits` to indicate (and describe!)
+each meaningful difference between two versions of the project folder. Each commit is a snap shot of all files in the project folder, and lists how that snapshot differs from
+the previous snapshot (i.e., the previous commit)
+
+
+
+So stead of having a list of each saved version of a file, in git you use commits <br>
 <br>
-Each commit is a snap shot of all files in the project folder, and lists how that snapshot differs from
-the previous snapshot (i.e., the previous commit).<br>
+.<br>
 <br>
 Each commit has a time stamp and tracks who did the commit. This is similar to my old way of keeping track of things:
 naming each version of a file _YYMMDD docname INITIALS.doc_... but much better!<br>
