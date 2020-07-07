@@ -11,9 +11,7 @@
   - [4. `commit`](#commit)
   - [3. `stage`](#stage)
   - [0. `pull`](#pull)
-  - [5. `push`](#push)
----
-Tutorial starts here:  
+  - [5. `push`](#push)  
 * [First time setup](#step-0)
 * [New project setup](#project-setup)
 * [Practice 1: staging and committing](#practice-stage-commit)
@@ -72,11 +70,12 @@ how git works to start using it!
 Some terms are useful though (makes it easier to search help files):
 
 #### <a name="repo">1. Repository (a.k.a. _repo_)</a>
-= basically a project folder
-  > A repo contains all files associated with a project
+_= basically a project folder_
+
+A repo contains all files associated with a project
   (including any associated  documentation). Your project repo also stores **every file's revision history**.
-  >
-  > Repos can have multiple collaborators and can be either public or private.
+
+Repos can have multiple collaborators and can be either public or private.
 
 You can get a repo in two main ways:
 1. You can `clone` an existing Git repository from elsewhere
@@ -88,22 +87,23 @@ You can get a repo in two main ways:
 Ok, so what is `cloning`?
 
 #### <a name="clone">2. `Clone`</a>
-to `clone` a repo is to "download" it (...kinda)
+_to `clone` a repo is to "download" it (...kinda)_
 
-A clone is a copy of a repository that lives on your computer (instead of in the cloud somewhere)
-  > So why did I put "download" in scare quotes?
-  The main difference between cloning and downloading is that when
-  git clones a repo, it pulls down a full copy of all versions of every file and folder for the project AND
-  it remembers where you downloaded it from!
-  >
-  > The cloned repo stays connected to the _remote_ version (i.e. the one in the cloud), so when you make local changes to your file, git knows where these should go when you decide to push them to the remote version
-  >
-  > If you instead decided to download the repo, you would just get
-  the most recent files on the default branch. In brief, you
-  wouldn't get any of the magic (i.e., the .git folder) and you can no longer use git in the downloaded folder
+A clone is a copy of a repository that lives on your computer (instead of in the cloud somewhere).
+
+So why did I put "download" in scare quotes?
+The main difference between cloning and downloading is that when
+git clones a repo, it pulls down a full copy of all versions of every file and folder for the project AND
+it remembers where you downloaded it from!
+
+The cloned repo stays connected to the _remote_ version (i.e. the one in the cloud), so when you make local changes to your file, git knows where these should go when you decide to push them to the remote version
+
+> :exclamation: If you instead decided to download the repo, you would just get
+the most recent files on the default branch. In brief, you
+wouldn't get any of the magic (i.e., the .git folder) and you can no longer use git in the downloaded folder
 
 #### <a name="commit">4. `Commit`</a>
-= a revision
+_= a revision_
 
 Above, I mentioned that a project repo stores every file's revision history. How do changes make it into the history? And how is it different from, say, how this works in Dropbox.
 
@@ -143,8 +143,8 @@ This is likely the biggest difference compared to your current workflow.
 Git is always watching your changes, but it doesn't store them
 until we commit them.
 
-#### <a name="stage">5. `Stage`</a>
-= tell git to mark the files that you will include in your next commit
+#### <a name="stage">3. `Stage`</a>
+_= tell git to mark the files that you will include in your next commit_
 
 Staging is kind of an intermediate step between saving a file locally and creating the commit.
 (So yes, the numbering is out of order on purpose :smile:)
@@ -177,7 +177,7 @@ So the staging step recording what _files_ you have changed and the commit
 <br>
 
 #### <a name="pull">0. `Pull`</a>
-to `pull` changes = syncing changes from the remote (e.g. GitHub) to your local repo
+_to `pull` changes = syncing changes from the remote (e.g. GitHub) to your local repo_
 
 When you pull from a repository, you retrieve all
 commits from that remote repository and
@@ -185,7 +185,7 @@ merge them into the local repository.
 You should do this before you start working (which is why I numbered it "0")
 
 #### <a name="push">6. `Push`</a>
-= send your (committed) changes to a remote repository (e.g., on GitHub)
+_= send your (committed) changes to a remote repository (e.g., on GitHub)_
 
 If you change something locally, nobody else will have access to those changes until you _push_ them to the remote repo.
 
@@ -266,9 +266,10 @@ cd [repo-name-that-you-just-cloned]
 ## <a name="practice-stage-commit">Practice staging and committing</a>
 
 1. In your local clone, open up the README.md file in a text editor.
-It is in markdown format, but is easy to edit in any text editor.
+It is in markdown format, which is easy to edit in any text editor.
 [Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) is a markdown cheat sheet
-if you want to try any more fancy things (and for future reference).<br>
+if you want to try any more fancy things (and for future reference).
+
 2. Under collaborators, add your name to the file. `<br>` tells markdown that you want a new line.
 3. Save the file.
 4. Using git bash, add a folder in the repo called Various using `mkdir Various`, which will create the folder in the working directory. 5. Create a folder inside Various with your name. As you probably guessed, you will type `mkdir Various/your_name`.
